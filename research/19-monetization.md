@@ -2,44 +2,57 @@
 
 ## Summary
 
-Voice/journal AI apps in 2026 cluster around three monetization patterns: freemium subscription ($8-15/mo or $50-100/yr), tiered pro/enterprise (Otter, Granola), and one-time/lifetime deals used as launch tactics (Voicenotes, AudioPen). Variable AI cost (STT + LLM + TTS) is the dominant unit-economics constraint: a power user generating ~30 min/day of audio with cloud transcription, LLM reflection, and HD TTS readback can plausibly cost $3-8/month before app-store fees, which is why most apps cap features, throttle audio minutes, or push BYO-key. Apple/Google take 30% (15% under the Small Business Program for devs under $1M/yr in proceeds), so a $9.99 sub nets roughly $5.50-$7.20 after store fees and AI costs. Consumer journaling apps generally avoid family plans (Day One explicitly does not support Family Sharing), favoring shared-journal collaboration features instead.
+The journaling/voice-AI market in 2025-2026 has converged on freemium subscriptions priced at roughly $50-$100/year for individuals, with a long tail of higher meeting/team tiers ($14-$30/user/month). Unit economics are dominated by speech-to-text, LLM, and (optionally) TTS costs, plus a 15-30% App Store cut; for a daily voice journaler the variable AI cost is on the order of $0.50-$1.00 per active user per month if you stay on cost-efficient models, but TTS narration can quickly 5-10x that. Lifetime deals and BYO-key models have proven viable for indie players (Voicenotes, AudioPen) but most scaled apps default to recurring subscriptions with annual discounts and team tiers. A $7-$10/month price point with an opt-out trial is the most defensible mainstream wedge.
 
 ## Pricing Models in Market
 
-- **Day One** (journal incumbent): Basic free; Silver $49.99/yr; Gold $74.99/yr (adds AI Daily Chat, summaries, smart titles). No family plan; shared journals instead. ([Day One Plans](https://dayoneapp.com/plans/), [Day One FAQ](https://dayoneapp.com/guides/premium-subscription/day-one-premium-faq/))
-- **Rosebud** (AI journaling): Free tier; Premium $12.99/mo; Bloom $155.99/yr with summaries + goal-setting. Raised $6M Series A. ([Rosebud Pricing](https://help.rosebud.app/getting-started/pricing), [TechCrunch](https://techcrunch.com/2025/06/04/rosebud-lands-6m-to-scale-its-interactive-ai-journaling-app/))
-- **AudioPen** (voice-to-text): Free (10 notes, 3-min cap); Prime ~$75-99/yr; lifetime deal historically ~$100-120. ([AudioPen Prime](https://www.audiopen.ai/prime))
-- **Voicenotes** (BuyMeACoffee maker): $10/mo or $99/yr; launched with a one-time 1,000-seat $50 lifetime deal that's now closed. ([Voicenotes Pricing](https://voicenotes.com/pricing), [Indie Hackers](https://www.indiehackers.com/post/buymeacoffee-founder-is-giving-his-new-voicenotes-ai-app-lifetime-access-for-50-c73d173e69))
-- **Otter** (transcription/meetings): Free 300 min/mo; Pro $8.33/user/mo annual; Business $20/user/mo annual; Enterprise ~$15-35K/yr. ([Otter Pricing](https://otter.ai/pricing))
-- **Granola** (AI meeting notes): Free with 30-day history; Business $14/user/mo; Enterprise $35/user/mo. Recently dropped its prior "Pro/Individual" tier. Now $1.5B valuation. ([Granola Pricing](https://www.granola.ai/pricing), [TechCrunch](https://techcrunch.com/2026/03/25/granola-raises-125m-hits-1-5b-valuation-as-it-expands-from-meeting-notetaker-to-enterprise-ai-app/))
-- **"Bonsai"**: No prominent journaling app by this name in 2026; Bonsai is a freelancer business-management SaaS. Worth picking a different reference.
+- **Day One** – Free Basic; Silver $49.99/yr; Gold $74.99/yr (adds AI features). Android Premium is just $24.99/yr, suggesting platform-level price discrimination. ([dayoneapp.com](https://dayoneapp.com/plans/))
+- **Otter.ai** – Free (300 min/mo); Pro $8.33/mo annual ($16.99 monthly); Business $20/user/mo; Enterprise custom. Student/teacher 20% discount. ([Sonix breakdown](https://sonix.ai/resources/otter-ai-pricing/), [Otter pricing](https://otter.ai/pricing))
+- **Rosebud** – Free basic; $12.99/mo Premium unlocks long-term memory and voice/call modes. 7-day free trial. Raised $6M in 2025. ([TechCrunch](https://techcrunch.com/2025/06/04/rosebud-lands-6m-to-scale-its-interactive-ai-journaling-app/))
+- **AudioPen** – Free (10 notes, 3 min each); Prime $99/yr; previously $120 lifetime deal. Web/Chrome only. ([audiopen.ai/prime](https://www.audiopen.ai/prime))
+- **Voicenotes** – $14.99/mo or $99.99/yr (raised from $79 in Oct 2025); $50 lifetime "Believer" deal retired Nov 2024; team plan with no per-seat pricing. ([voicenotes.com/pricing](https://voicenotes.com/pricing), [Lifetimo](https://lifetimo.com/deal/voicenotes-deal/))
+- **Granola** – Free Basic (last 30 days only); Business $14/user/mo; Enterprise $35+/user/mo with SSO + training opt-out. No annual billing or minute packs. ([granola.ai/pricing](https://www.granola.ai/pricing))
+- **Bonsai** – The agency/freelancer SaaS (~$17/mo, [hellobonsai.com](https://www.hellobonsai.com/pricing)) is not a journaling app; only useful as a comp for higher-priced "all-in-one" framing.
+
+Common patterns: hard paywalls or opt-out trials at $7-$13/mo, ~40% annual discount, free tier capped by minutes/recordings, team/family rare in journaling but standard in meeting apps.
 
 ## Unit Economics
 
-Approximate per-active-user cost for a voice journal with 15-30 min/day of audio:
+Per active user with ~5 minutes of voice/day (~150 min/mo):
 
-- **STT**: OpenAI Whisper / GPT-4o Transcribe at $0.006/min, GPT-4o-mini-transcribe at $0.003/min. 30 min/day × 30 days × $0.006 = ~$5.40/mo (worst case); mini = ~$2.70. ([OpenAI Pricing](https://openai.com/api/pricing/))
-- **LLM**: GPT-5.4 Nano at $0.20/M input is now the cost floor; cached prompts on Claude Sonnet 4.6 reportedly drop $0.90 → $0.09/user/mo. Realistic chat + summary load: $0.20-$1.50/mo with caching. ([CloudZero](https://www.cloudzero.com/blog/openai-pricing/), [AI Cost Check](https://aicostcheck.com/blog/ai-cost-per-user-saas-pricing-2026))
-- **TTS** (the killer for "narrate my day"): OpenAI tts-1 $15/1M chars (~$0.015/1K); ElevenLabs Flash $60/1M chars; ElevenLabs Multilingual v2 $120/1M. A 5-minute "epic narration" is ~4,500 chars: $0.07 (OpenAI) vs $0.27-$0.54 (ElevenLabs) per generation. Daily playback × 30 = $2-16/mo on premium voices. ([ElevenLabs Pricing](https://elevenlabs.io/pricing), [costgoat](https://costgoat.com/pricing/openai-tts))
-- **Blended COGS**: Heavy user = $4-10/mo all-in; median user closer to $1-2. Industry rule of thumb is keep AI COGS under $3-5/user on a $9-29 sub. ([AI Cost Check](https://aicostcheck.com/blog/ai-cost-per-user-saas-pricing-2026))
-- **Store cuts**: 30% standard, 15% under Apple's Small Business Program (proceeds <$1M/yr); Google Play matches. EU alternative terms can drop to 10% on year-2+ subs. ([Apple SBP](https://developer.apple.com/app-store/small-business-program/), [RevenueCat](https://www.revenuecat.com/blog/engineering/small-business-program/))
+- **STT** – OpenAI Whisper / GPT-4o-mini-transcribe at $0.003-$0.006/min ⇒ **$0.45-$0.90/mo**. Google/AWS/Azure are 3-4x more expensive at $0.017-$0.024/min. ([VocaFuse comparison](https://vocafuse.com/blog/best-speech-to-text-api-comparison-2025/))
+- **LLM** – GPT-4o-mini at $0.15/M input + $0.60/M output. A daily 500-word entry plus summary/narration prompt is ~1k in / 500 out ⇒ **<$0.02/mo**. ([OpenAI pricing](https://openai.com/api/pricing/))
+- **TTS narration (optional)** – ElevenLabs starts at $5/mo for ~30 min of audio; per-character credits make a 2-min daily narration cost roughly **$2-$5/mo** at retail rates, far more than STT+LLM combined. ([ElevenLabs](https://elevenlabs.io/pricing))
+- **Store cut** – Apple/Google take **30%** standard, **15%** under the Small Business Program (≤$1M net proceeds) and after year-1 of any subscription. ([Apple SBP](https://developer.apple.com/app-store/small-business-program/), [RevenueCat](https://www.revenuecat.com/blog/engineering/small-business-program/))
 
-So $9.99/mo iOS sub: $9.99 → $8.49 (15% SBP) → ~$5-7 contribution after AI; $4.99 → ~$1-3 net, very thin.
+A $7.99/mo plan nets ~$6.79 (15%) or ~$5.59 (30%); AI COGS of $0.50-$1.00 yields ~85% gross margin without TTS, dropping to ~50-60% if every user gets daily TTS narration on premium voices.
 
 ## Trade-offs
 
-- **Freemium + paywalled AI**: industry default; converts ~2-5% but caps loss leaders by gating audio minutes, AI calls, or history (Granola's 30-day cap, Otter's 300 min, AudioPen's 3-min note cap).
-- **BYO-key**: Eliminates variable cost and PII liability; works for prosumer/dev audiences but kills mainstream conversion — typically paired with a $99/mo "license" SaaS fee. ([L.E.K.](https://www.lek.com/insights/tmt/us/ei/seats-calls-why-api-monetization-next-pricing-frontier-ai-age))
-- **Lifetime deals**: Great for cold-start cash + buzz (Voicenotes' $50 × 1,000 seats = $50K seed) but compounds AI COGS forever; only safe with hard usage caps or sunsetting clauses.
-- **Family plans**: Rare in journaling because journals are inherently single-user; Day One's "shared journals" pattern is the dominant compromise.
-- **Annual-only pricing** (Day One, Rosebud Bloom): improves LTV and reduces churn but raises the conversion bar; pair with free trial.
+- **Freemium vs hard paywall** – RevenueCat's 2025 data shows median freemium converts at ~2.2% vs ~12.1% for hard paywalls; opt-out trials hit ~49% vs ~18% opt-in. ([RevenueCat State of Subs 2025](https://www.revenuecat.com/state-of-subscription-apps-2025/))
+- **Lifetime deals** – Cash up front and word-of-mouth, but cap LTV and create perpetual COGS liability as AI costs evolve; Voicenotes retired theirs partly to fund infra.
+- **BYO-key** – Eliminates pass-through cost risk and lets power users access frontier models, but adds onboarding friction and breaks the App Store IAP requirement on iOS for "digital content." Better for web/desktop or as a power-user tier. ([BYOKList](https://byoklist.com/))
+- **TTS cost** – Premium narration is the single biggest margin lever; making it opt-in, weekly (not daily), or lower-tier voice models is essential.
 
 ## Recommendations
 
-1. **Launch tier**: Free with hard caps (e.g., 5 min/day audio, 7-day history, basic TTS voice) + Premium at $7.99/mo or $59.99/yr. Annual price ~6× monthly to drive yearly conversion.
-2. **Premium ceiling**: Add a $14.99/mo "Storyteller" tier for ElevenLabs-quality narration, longer history, and richer LLM reflections — only break-even unit economics here justify the high TTS cost.
-3. **Cap AI usage** by minutes-of-audio, not by feature gates, so power users self-select up the ladder. Use GPT-4o-mini-transcribe + tts-1 as defaults; reserve premium voices for paid.
-4. **Apply for the Apple SBP** day one — 15% vs 30% is the difference between viable and not at $7.99/mo.
-5. **Skip BYO-key for v1** (too friction-heavy for a journaling consumer audience), but keep an "Advanced/Developer" toggle in mind as a churn-saver for power users.
-6. **Skip family plans**; offer a "shared journal" collaborative feature to capture the same emotional value without halving ARPU.
-7. **Avoid lifetime deals** unless explicitly capped (e.g., 1,000 seats, founders-only) — the AI COGS curve is too unpredictable to lock in forever.
+1. **Anchor at $7.99/mo or $59/yr** with an opt-out 7-day trial — undercuts Day One Gold and AudioPen, sits below Rosebud, and supports 80%+ gross margin on text features.
+2. **Free tier**: ~3-5 entries/week, basic transcription + summary, no narration; mirrors Otter/Rosebud and creates a clear upgrade trigger.
+3. **Make TTS narration a Pro-tier or credit-metered feature** — use OpenAI/ElevenLabs Flash/Turbo voices (0.5 credits/char) by default and reserve premium voices for higher tiers or weekly "epic recap" episodes.
+4. **Skip lifetime; add a Family plan** ($99-$119/yr for 4-5 seats) once you have proof of retention — Apple Family Sharing on auto-renewables is well supported.
+5. **Plan for a 15% effective store fee** (Small Business Program from day 1; year-2 subs drop to 15% anyway) and offer a web/Stripe path for power users to recover margin.
+6. **Optional BYOK power tier** on web only — appeals to the AudioPen/Voicenotes lifetime-deal demographic without iOS IAP conflicts.
+
+Sources:
+- [Day One Plans](https://dayoneapp.com/plans/)
+- [Otter.ai Pricing](https://otter.ai/pricing) / [Sonix breakdown](https://sonix.ai/resources/otter-ai-pricing/)
+- [Rosebud TechCrunch funding](https://techcrunch.com/2025/06/04/rosebud-lands-6m-to-scale-its-interactive-ai-journaling-app/)
+- [AudioPen Prime](https://www.audiopen.ai/prime)
+- [Voicenotes Pricing](https://voicenotes.com/pricing)
+- [Granola Pricing](https://www.granola.ai/pricing)
+- [OpenAI API Pricing](https://openai.com/api/pricing/)
+- [Whisper / STT comparison](https://vocafuse.com/blog/best-speech-to-text-api-comparison-2025/)
+- [ElevenLabs Pricing](https://elevenlabs.io/pricing)
+- [Apple Small Business Program](https://developer.apple.com/app-store/small-business-program/)
+- [RevenueCat State of Subscription Apps 2025](https://www.revenuecat.com/state-of-subscription-apps-2025/)
+- [BYOKList](https://byoklist.com/)
